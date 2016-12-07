@@ -9,7 +9,9 @@
 import Foundation
 
 protocol PopRequest {
-    
+    var urlString: String { get set }
+    var method: HTTPMethod { get set }
+    var parameter: [String: Any] { get set }
 }
 
 protocol SessionRequest {
