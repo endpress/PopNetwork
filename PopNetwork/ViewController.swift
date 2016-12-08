@@ -10,9 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        doSomeThing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func doSomeThing() {
+        let request = Request(url: "https://api.onevcat.com/users/onevcat")
+        User.decode(from: request) { (result) in
+            switch result {
+            case .Success(let result):
+                print("\(result)")
+            case .Faliure(let error):
+                if case .error(let reason) = error {
+                    print("\(reason)")
+                }
+            }
+        }
+    }
 }
 

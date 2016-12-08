@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol URLable {
-    func asURL() -> URL?
-}
-
 protocol Decodable {
-    func decode(from url: String) -> Self
-    func decode(from url: URL) -> Self
-    func decode(from url: NSURL) -> Self
+    
+    associatedtype Object
+    
+    static func decode(from request: PopRequest, result: ResultHandler<Object>) -> Void
 }

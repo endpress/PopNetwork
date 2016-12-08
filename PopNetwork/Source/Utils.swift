@@ -8,10 +8,17 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
     case GET
     case POST
 }
 
-public typealias Parameters = [String: Any]
+typealias Parameters = [String: Any]
+typealias ResultHandler<T> = (Result<T>) -> Void
+
+enum Result<T> {
+    case Success(result: T)
+    case Faliure(error: PopError)
+}
+
 

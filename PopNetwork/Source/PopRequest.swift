@@ -8,12 +8,37 @@
 
 import Foundation
 
+
+protocol URLConvertiable {
+    func asURL() -> URL?
+}
+
+extension String: URLConvertiable {
+    func asURL() -> URL? {
+        return URL(string: self)
+    }
+}
+
+extension URL: URLConvertiable {
+    func asURL() -> URL? {
+        return self
+    }
+}
+
 protocol PopRequest {
-    var urlString: String { get set }
+    var url: URLConvertiable { get set }
     var method: HTTPMethod { get set }
     var parameter: [String: Any] { get set }
 }
 
-protocol SessionRequest {
+struct Request: PopRequest {
+    var url: URLConvertiable
+    var method: HTTPMethod
+    var parameter: Parameters
     
+    init(url: URLConvertiable, parameter: Parameters = [:], method: HTTPMethod = .GET) {
+        self.url = url
+        self.parameter = parameter
+        self.method = method
+    }
 }
