@@ -12,8 +12,19 @@ import Foundation
 class SessionDelegate: NSObject {
     static let `default` = SessionDelegate()
     
-    fileprivate var requests = [Int: PopResponse]()
+    fileprivate var handlers = [Int: DataHandler]()
+    private let lock = NSLock()
     
+    subscript(task: URLSessionTask) -> DataHandler? {
+        get {
+            lock.lock(); defer { lock.unlock() }
+            return handlers[task.taskIdentifier]
+        }
+        set {
+            lock.lock(); defer { lock.unlock() }
+            handlers[task.taskIdentifier] = newValue
+        }
+    }
 }
 
 // MARK: - URLSessionDelegate

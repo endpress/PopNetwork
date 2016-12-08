@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Client {
-    func send<T: PopRequest>(popRequest: T)
+    func send<T: PopRequest>(popRequest: T, dataHandler: @escaping DataHandler)
 }
 
 
@@ -19,17 +19,23 @@ protocol SessionClient: Client {
 
 extension SessionClient {
     var session: URLSession {
-        return URLSession.shared
+        return SessionSingleton.default
     }
     
-    func send<T: PopRequest>(popRequest: T) {
+    func send<T: PopRequest>(popRequest: T, dataHandler: @escaping DataHandler) {
         
         guard let url = popRequest.url.asURL() else { return }
         var request = URLRequest(url: url)
         request.httpMethod = popRequest.method.rawValue
         
         let task = session.dataTask(with: request)
+        let sessionDelegate = SessionDelegate.default
+        sessionDelegate[task] = dataHandler
         task.resume()
     }
+}
+
+struct SessionSingleton {
+    static let `default` = URLSession(configuration: .default, delegate: SessionDelegate.default, delegateQueue: nil)
 }
 
