@@ -12,5 +12,5 @@ protocol Decodable {
     
     associatedtype Object
     
-    static func decode(from request: PopRequest, result: ResultHandler<Object>) -> Void
+    static func decode<T: PopRequest>(from request: T, result: @escaping ResultHandler<User>) -> Void
 }

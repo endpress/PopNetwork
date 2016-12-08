@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         let request = Request(url: "https://api.onevcat.com/users/onevcat")
         User.decode(from: request) { (result) in
             switch result {
-            case .Success(let result):
-                print("\(result)")
+            case .Success(let user):
+                print("\(user)")
             case .Faliure(let error):
                 if case .error(let reason) = error {
                     print("\(reason)")

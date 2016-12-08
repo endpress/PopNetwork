@@ -30,9 +30,14 @@ extension SessionClient {
         
         let task = session.dataTask(with: request)
         let sessionDelegate = SessionDelegate.default
-        sessionDelegate[task] = dataHandler
+        var response = Response()
+        response.dataHandler = dataHandler
+        sessionDelegate[task] = response
         task.resume()
     }
+}
+
+struct HTTPClient: SessionClient {
 }
 
 struct SessionSingleton {

@@ -12,10 +12,10 @@ import Foundation
 class SessionDelegate: NSObject {
     static let `default` = SessionDelegate()
     
-    fileprivate var handlers = [Int: DataHandler]()
+    fileprivate var handlers = [Int: Response]()
     private let lock = NSLock()
     
-    subscript(task: URLSessionTask) -> DataHandler? {
+    subscript(task: URLSessionTask) -> Response? {
         get {
             lock.lock(); defer { lock.unlock() }
             return handlers[task.taskIdentifier]
@@ -158,6 +158,21 @@ extension SessionDelegate: URLSessionTaskDelegate {
     /// - parameter error:   If an error occurred, an error object indicating how the transfer failed, otherwise nil.
     open func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         /// Executed after it is determined that the request is not going to be retried
-        
+        if let response = self[task], let dataHandler = response.dataHandler {
+            if let _ = error {
+                dataHandler(nil, PopError.error(reason: "faliure"))
+                return
+            }
+            dataHandler(response.data as? Data, nil)
+        }
+    }
+}
+
+//MARK: - URLSessionDataDelegate
+extension SessionDelegate: URLSessionDataDelegate {
+    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        if let response = self[dataTask] {
+            response.data?.append(data)
+        }
     }
 }

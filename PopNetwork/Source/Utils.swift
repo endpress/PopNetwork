@@ -15,7 +15,7 @@ enum HTTPMethod: String {
 
 typealias Parameters = [String: Any]
 typealias ResultHandler<T> = (Result<T>) -> Void
-typealias DataHandler = (Data) -> Any?
+typealias DataHandler = (Data?, PopError?) -> Void
 
 enum Result<T> {
     case Success(result: T)
