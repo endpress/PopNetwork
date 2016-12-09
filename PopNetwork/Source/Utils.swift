@@ -15,10 +15,15 @@ enum HTTPMethod: String {
 
 typealias Parameters = [String: Any]
 typealias ResultHandler<T> = (Result<T>) -> Void
-typealias DataHandler = (Data?, PopError?) -> Void
+typealias DataHandler = (DataResult) -> Void
 
 enum Result<T> {
     case Success(result: T)
+    case Faliure(error: PopError)
+}
+
+enum DataResult {
+    case Success(data: Data)
     case Faliure(error: PopError)
 }
 

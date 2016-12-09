@@ -14,22 +14,19 @@ protocol PopResponse {
     var response: HTTPURLResponse? { get }
     
     /// The data returned by the server.
-    var data: NSMutableData? { get }
+    var data: Data? { get }
     
-    /// The error encountered while executing or validating the request.
-    var error: Error? { get }
-    
+    /// The dataHandler
     var dataHandler: DataHandler? { get }
 }
 
 struct Response: PopResponse {
     
     var response: HTTPURLResponse?
-    var data: NSMutableData? = NSMutableData(capacity: 0)
-    var error: Error?
+    var data: Data? = Data()
     var dataHandler: DataHandler?
     
-    init() {
-        
+    init(dataHandler: DataHandler? = nil) {
+        self.dataHandler = dataHandler
     }
 }

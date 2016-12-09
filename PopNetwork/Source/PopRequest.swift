@@ -29,6 +29,18 @@ protocol PopRequest {
     var url: URLConvertiable { get set }
     var method: HTTPMethod { get set }
     var parameter: [String: Any] { get set }
+    var urlRequest: URLRequest? { get }
+}
+
+extension PopRequest {
+    var urlRequest: URLRequest? {
+        guard let url = url.asURL() else {
+            return nil
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        return request
+    }
 }
 
 struct Request: PopRequest {

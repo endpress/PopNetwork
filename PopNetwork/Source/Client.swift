@@ -15,32 +15,34 @@ protocol Client {
 
 protocol SessionClient: Client {
     var session: URLSession { get }
+    var sessionDelegate: SessionDelegate { get }
 }
 
 extension SessionClient {
+    
     var session: URLSession {
         return SessionSingleton.default
     }
     
+    var sessionDelegate: SessionDelegate {
+        return SessionDelegate.default
+    }
+    
+    
     func send<T: PopRequest>(popRequest: T, dataHandler: @escaping DataHandler) {
         
-        guard let url = popRequest.url.asURL() else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = popRequest.method.rawValue
-        
+        guard let request = popRequest.urlRequest else { return }
         let task = session.dataTask(with: request)
-        let sessionDelegate = SessionDelegate.default
-        var response = Response()
-        response.dataHandler = dataHandler
-        sessionDelegate[task] = response
+        sessionDelegate[task] = Response(dataHandler: dataHandler)
         task.resume()
     }
 }
 
-struct HTTPClient: SessionClient {
-}
-
 struct SessionSingleton {
     static let `default` = URLSession(configuration: .default, delegate: SessionDelegate.default, delegateQueue: nil)
+}
+
+struct HTTPClient: SessionClient {
+    
 }
 
