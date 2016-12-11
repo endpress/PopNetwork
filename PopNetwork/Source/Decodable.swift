@@ -8,8 +8,10 @@
 
 import Foundation
 
+/// decodable protocol is used to generator a object from network data
 protocol Decodable {
     
+    /// request that used to sent. It must confirm PopRequest protocol
     associatedtype RequestTpye: PopRequest
     
     static var request: RequestTpye { get }

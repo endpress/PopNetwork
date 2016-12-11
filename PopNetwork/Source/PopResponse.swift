@@ -20,13 +20,3 @@ protocol PopResponse {
     var dataHandler: DataHandler? { get }
 }
 
-struct Response: PopResponse {
-    
-    var response: HTTPURLResponse?
-    var data: Data? = Data()
-    var dataHandler: DataHandler?
-    
-    init(dataHandler: DataHandler? = nil) {
-        self.dataHandler = dataHandler
-    }
-}

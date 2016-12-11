@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Error Handling
 public enum PopError: Error {
     case error(reason: String)
 }

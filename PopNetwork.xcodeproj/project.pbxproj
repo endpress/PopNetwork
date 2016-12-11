@@ -20,6 +20,7 @@
 		18202A741DF95DCE00E2DF0A /* PopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18202A731DF95DCE00E2DF0A /* PopResponse.swift */; };
 		18202A781DFA994000E2DF0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18202A771DFA994000E2DF0A /* User.swift */; };
 		5A1A0E141DF85AE400ADBFA2 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */; };
+		5ACE6D501DFD05F300188827 /* RequestAndResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		18202A731DF95DCE00E2DF0A /* PopResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopResponse.swift; sourceTree = "<group>"; };
 		18202A771DFA994000E2DF0A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
+		5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAndResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				18202A731DF95DCE00E2DF0A /* PopResponse.swift */,
 				18202A611DF7FAD900E2DF0A /* Client.swift */,
 				18202A711DF94BD700E2DF0A /* SessionDelegate.swift */,
+				5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				18202A601DF7E14300E2DF0A /* PopRequest.swift in Sources */,
 				18202A5E1DF7C97D00E2DF0A /* Utils.swift in Sources */,
 				18202A621DF7FAD900E2DF0A /* Client.swift in Sources */,
+				5ACE6D501DFD05F300188827 /* RequestAndResponse.swift in Sources */,
 				18202A781DFA994000E2DF0A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

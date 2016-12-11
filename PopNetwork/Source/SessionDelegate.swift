@@ -158,10 +158,10 @@ extension SessionDelegate: URLSessionTaskDelegate {
         
         if let response = self[task], let dataHandler = response.dataHandler {
             if let _ = error {
-                dataHandler(DataResult.Faliure(error: PopError.error(reason: "faliure")))
+                dataHandler(Result.Faliure(error: PopError.error(reason: "faliure")))
                 return
             }
-            dataHandler(DataResult.Success(data: response.data!))
+            dataHandler(Result.Success(result: response.data!))
         }
     }
 }

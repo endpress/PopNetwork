@@ -43,14 +43,3 @@ extension PopRequest {
     }
 }
 
-struct Request: PopRequest {
-    var url: URLConvertiable
-    var method: HTTPMethod
-    var parameter: Parameters
-    
-    init(url: URLConvertiable, parameter: Parameters = [:], method: HTTPMethod = .GET) {
-        self.url = url
-        self.parameter = parameter
-        self.method = method
-    }
-}
