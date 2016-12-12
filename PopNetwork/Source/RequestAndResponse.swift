@@ -9,7 +9,7 @@
 import Foundation
 
 
-
+/// Just a case. You can user anything else that confirms PopRequest
 struct Request: PopRequest {
     var url: URLConvertiable
     var method: HTTPMethod
@@ -22,7 +22,7 @@ struct Request: PopRequest {
     }
 }
 
-
+/// Just a case. You can user anything else that confirms PopResponse
 struct Response: PopResponse {
     
     var response: HTTPURLResponse?
@@ -32,4 +32,14 @@ struct Response: PopResponse {
     init(dataHandler: DataHandler? = nil) {
         self.dataHandler = dataHandler
     }
+}
+
+/// Just a case. You can user anything else that confirms SessionClient
+struct HTTPClient: SessionClient {
+    
+}
+
+/// Just a case. You can user anything else that confirms ParameterEncoding
+struct ParameterEncoder: ParameterEncoding {
+    
 }

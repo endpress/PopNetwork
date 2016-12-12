@@ -23,16 +23,6 @@ class ViewController: UIViewController {
 
     func doSomeThing() {
         
-//        User.decode(from: Request(url: "https://api.onevcat.com/users/onevcat")) { (result) in
-//            switch result {
-//            case .Success(let user):
-//                print("\(user)")
-//            case .Faliure(let error):
-//                if case .error(let reason) = error {
-//                    print("\(reason)")
-//                }
-//            }
-//        }
         User.decode { (result) in
             switch result {
             case .Success(let user):
@@ -43,6 +33,10 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+//        Yiqixie.decode { (result) in
+//            
+//        }
     }
 }
 

@@ -8,18 +8,25 @@
 
 import Foundation
 
+/// HTTP method definitions.
 enum HTTPMethod: String {
     case GET
     case POST
 }
 
-typealias Parameters = [String: Any]
-typealias ResultHandler<T> = (Result<T>) -> Void
-typealias DataHandler = (Result<Data>) -> Void
-
+/// A common result
 enum Result<T> {
     case Success(result: T)
     case Faliure(error: PopError)
 }
+
+// MARK: - Typealias
+/// A dictionary of parameters to apply to a `URLRequest`.
+typealias Parameters = [String: Any]
+/// A closure to handle the final result
+typealias ResultHandler<T> = (Result<T>) -> Void
+/// A closure to parse data retruned from `DataTask`.
+typealias DataHandler = (Result<Data>) -> Void
+
 
 

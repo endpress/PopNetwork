@@ -8,11 +8,12 @@
 
 import Foundation
 
+/// the client protocol used to sent request and handle data
 protocol Client {
     func send<T: PopRequest>(popRequest: T, dataHandler: @escaping DataHandler)
 }
 
-
+/// a session client use session to sent request
 protocol SessionClient: Client {
     var session: URLSession { get }
     var sessionDelegate: SessionDelegate { get }
@@ -30,8 +31,11 @@ extension SessionClient {
     
     
     func send<T: PopRequest>(popRequest: T, dataHandler: @escaping DataHandler) {
-        
-        guard let request = popRequest.urlRequest else { return }
+        let parameterEncoder = ParameterEncoder()
+        let encodeError = PopError.error(reason: "ParameterEncoder encode function failed")
+        guard let request = parameterEncoder.encode(popRequest: popRequest) else {
+            return dataHandler(Result.Faliure(error: encodeError))
+        }
         let task = session.dataTask(with: request)
         sessionDelegate[task] = Response(dataHandler: dataHandler)
         task.resume()
@@ -42,7 +46,4 @@ struct SessionSingleton {
     static let `default` = URLSession(configuration: .default, delegate: SessionDelegate.default, delegateQueue: nil)
 }
 
-struct HTTPClient: SessionClient {
-    
-}
 

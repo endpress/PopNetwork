@@ -19,6 +19,8 @@
 		18202A721DF94BD700E2DF0A /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18202A711DF94BD700E2DF0A /* SessionDelegate.swift */; };
 		18202A741DF95DCE00E2DF0A /* PopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18202A731DF95DCE00E2DF0A /* PopResponse.swift */; };
 		18202A781DFA994000E2DF0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18202A771DFA994000E2DF0A /* User.swift */; };
+		1856235E1DFE78F600D5465C /* Yiqixie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856235D1DFE78F600D5465C /* Yiqixie.swift */; };
+		185623621DFE875100D5465C /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185623611DFE875100D5465C /* ParameterEncoding.swift */; };
 		5A1A0E141DF85AE400ADBFA2 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */; };
 		5ACE6D501DFD05F300188827 /* RequestAndResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		18202A711DF94BD700E2DF0A /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		18202A731DF95DCE00E2DF0A /* PopResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopResponse.swift; sourceTree = "<group>"; };
 		18202A771DFA994000E2DF0A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1856235D1DFE78F600D5465C /* Yiqixie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yiqixie.swift; sourceTree = "<group>"; };
+		185623611DFE875100D5465C /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAndResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +79,7 @@
 				18202A5A1DF7C63200E2DF0A /* Source */,
 				18202A481DF7C32A00E2DF0A /* AppDelegate.swift */,
 				18202A771DFA994000E2DF0A /* User.swift */,
+				1856235D1DFE78F600D5465C /* Yiqixie.swift */,
 				18202A4A1DF7C32A00E2DF0A /* ViewController.swift */,
 				18202A4C1DF7C32A00E2DF0A /* Main.storyboard */,
 				18202A4F1DF7C32A00E2DF0A /* Assets.xcassets */,
@@ -87,16 +92,25 @@
 		18202A5A1DF7C63200E2DF0A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				185623601DFE870B00D5465C /* Protocol */,
 				18202A5B1DF7C64300E2DF0A /* PopError.swift */,
 				18202A5D1DF7C97D00E2DF0A /* Utils.swift */,
-				5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */,
-				18202A5F1DF7E14300E2DF0A /* PopRequest.swift */,
-				18202A731DF95DCE00E2DF0A /* PopResponse.swift */,
-				18202A611DF7FAD900E2DF0A /* Client.swift */,
 				18202A711DF94BD700E2DF0A /* SessionDelegate.swift */,
 				5ACE6D4F1DFD05F300188827 /* RequestAndResponse.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		185623601DFE870B00D5465C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5A1A0E131DF85AE400ADBFA2 /* Decodable.swift */,
+				18202A5F1DF7E14300E2DF0A /* PopRequest.swift */,
+				18202A731DF95DCE00E2DF0A /* PopResponse.swift */,
+				18202A611DF7FAD900E2DF0A /* Client.swift */,
+				185623611DFE875100D5465C /* ParameterEncoding.swift */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +192,11 @@
 				5A1A0E141DF85AE400ADBFA2 /* Decodable.swift in Sources */,
 				18202A741DF95DCE00E2DF0A /* PopResponse.swift in Sources */,
 				18202A601DF7E14300E2DF0A /* PopRequest.swift in Sources */,
+				185623621DFE875100D5465C /* ParameterEncoding.swift in Sources */,
 				18202A5E1DF7C97D00E2DF0A /* Utils.swift in Sources */,
 				18202A621DF7FAD900E2DF0A /* Client.swift in Sources */,
 				5ACE6D501DFD05F300188827 /* RequestAndResponse.swift in Sources */,
+				1856235E1DFE78F600D5465C /* Yiqixie.swift in Sources */,
 				18202A781DFA994000E2DF0A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

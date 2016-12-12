@@ -8,8 +8,10 @@
 
 import Foundation
 
-
+/// handling all delegate callbacks.
 class SessionDelegate: NSObject {
+    
+    /// A default instance of `SessionDelegate`.
     static let `default` = SessionDelegate()
     
     fileprivate var responses = [Int: Response]()
@@ -104,7 +106,18 @@ extension SessionDelegate: URLSessionTaskDelegate {
         didReceive challenge: URLAuthenticationChallenge,
         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
     {
-
+        var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
+        var credential: URLCredential?
+        
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            if let serverTrust = challenge.protectionSpace.serverTrust {
+                disposition = .useCredential
+                credential = URLCredential(trust: serverTrust)
+            } else {
+                disposition = .cancelAuthenticationChallenge
+            }
+        }
+        completionHandler(disposition, credential)
     }
     
     /// Tells the delegate when a task requires a new request body stream to send to the remote server.

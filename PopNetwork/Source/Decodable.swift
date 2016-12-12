@@ -13,27 +13,22 @@ protocol Decodable {
     
     /// request that used to sent. It must confirm PopRequest protocol
     associatedtype RequestTpye: PopRequest
-    
-//    associatedtype ClientType: Client
-    
+    /// the request that construct URLRequest
     static var request: RequestTpye { get }
-    
+    /// Decode a object from a request.
     static func decode<T: PopRequest>(from request: T, result: @escaping ResultHandler<Self>)
-    
+    /// Decode a object from a request
     static func decode(result: @escaping ResultHandler<Self>)
-    
+    /// Parser the data returned by server
     static func parser(from data: Data) -> Self?
 }
 
+/// default function. You can your own function instead.
 extension Decodable {
     
     static func decode(result: @escaping ResultHandler<Self>) {
         decode(from: request, result: result)
     }
-    
-//    static func defaultClient() -> ClientType {
-//        return HTTPClient() as! Self.ClientType
-//    }
     
     static func decode<T: PopRequest>(from request: T, result: @escaping ResultHandler<Self>) {
         
