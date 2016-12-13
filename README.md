@@ -14,9 +14,9 @@ struct User: Decodable {
     let name: String
     let message: String
     
-    typealias RequestTpye = Request
+    typealias RequestType = Request
     
-    static var request: RequestTpye {
+    static var request: RequestType {
         return Request(url: "https://api.onevcat.com/users/onevcat")
     }
     
