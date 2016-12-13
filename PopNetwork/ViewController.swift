@@ -33,10 +33,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
-//        Yiqixie.decode { (result) in
-//            
-//        }
     }
 }
 

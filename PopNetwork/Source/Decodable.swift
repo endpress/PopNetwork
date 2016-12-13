@@ -12,9 +12,9 @@ import Foundation
 protocol Decodable {
     
     /// request that used to sent. It must confirm PopRequest protocol
-    associatedtype RequestTpye: PopRequest
+    associatedtype RequestType: PopRequest
     /// the request that construct URLRequest
-    static var request: RequestTpye { get }
+    static var request: RequestType { get }
     /// Decode a object from a request.
     static func decode<T: PopRequest>(from request: T, result: @escaping ResultHandler<Self>)
     /// Decode a object from a request
