@@ -14,6 +14,7 @@ struct User: Decodable {
     let name: String
     let message: String
     
+    /// you can use anything that confirms PopRequest protocol instead Request
     typealias RequestType = Request
     
     static var request: RequestType {
